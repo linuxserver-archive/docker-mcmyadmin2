@@ -16,14 +16,14 @@ Simply put, Spigot is it. Spigot is that "special sauce" used by many of the wor
 
 ##Ports and mappings:
 
-**8080** Maps to the mcmyadmin webui
-**25565** Maps to Minecraft gameserver
-**/minecraft** Will store all your minecraft related files
-**PUID** What UID it will run under.
-**PGID** What GID it wil run under.
-**REV** *Optional* if you want a spesific minecraft version. 
+- **8080** Maps to the mcmyadmin webui
+- **25565** Maps to Minecraft gameserver
+- **/minecraft** Will store all your minecraft related files
+- **PUID** What UID it will run under.
+- **PGID** What GID it wil run under.
+- **REV** *Optional* if you want a spesific minecraft version. 
 
 
 ## Sample create command:
 
-*docker create --name=<name> -e PUID=<UID> -e PGID <GID> -p 8080:8080 -p 25565:25565 -v </path/to/minecraft>:/minecraft linuxserver/mcmyadmin*
+> *docker create --name=<name> -e PUID=<UID> -e PGID <GID> -p 8080:8080 -p 25565:25565 -v </path/to/minecraft>:/minecraft linuxserver/mcmyadmin*
