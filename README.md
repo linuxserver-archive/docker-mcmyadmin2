@@ -29,3 +29,8 @@ Simply put, Spigot is it. Spigot is that "special sauce" used by many of the wor
 ```
 docker create --name=<name> -e PUID=<UID> -e PGID=<GID> -p 8080:8080 -p 25565:25565 -v </path/to/minecraft>:/minecraft linuxserver/mcmyadmin
 ```
+
+## Support at: 
+
+- [linuxserver.io](http://linuxserver.io)
+- #linuxserver.io@freenode
