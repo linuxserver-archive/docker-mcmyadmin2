@@ -43,10 +43,11 @@ Part of what makes our containers work so well is by allowing you to specify you
 
 ## Notes
 
-* You can access McMyAdmin on your server's port 8080 e.g. http://<ip>:8080
+* You can access McMyAdmin on your server's port 8080 e.g. http://<ip>:8080. Default password is "password" and should be changed.
 * Vanilla Minecraft, Spigot MC and CraftBukkit Comes Preinstalled and can be selected from the server dropdown, inside McMyAdmin
 * First boot Can take a long while, as the Craftbukkit and Spigot Mc, binarys will have to be compiled (This is also true when you swap versions)
 * Minimum of 2GB of ram required for this container to work properly.
+
 
 ## Updates
 
