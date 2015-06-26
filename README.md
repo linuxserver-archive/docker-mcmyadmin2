@@ -19,7 +19,7 @@ Simply put, Spigot is it. Spigot is that "special sauce" used by many of the wor
 ## Usage
 
 ```
-docker create --name=<container-name> -v /etc/localtime:/etc/localtime:ro -v <path to data>:/config -e PGID=<gid> -e PUID=<uid>  -p 1234:1234 linuxserver/<container-name>
+docker create --name=mcmyadmin -v /etc/localtime:/etc/localtime:ro -v <path to data>:/minecraft -e PGID=<gid> -e PUID=<uid>  -p 1234:1234 linuxserver/mcmyadmin
 ```
 
 **Parameters**
@@ -51,8 +51,8 @@ Part of what makes our containers work so well is by allowing you to specify you
 
 ## Updates
 
-* Upgrade to the latest version simply `docker restart <container-name>`.
-* To monitor the logs of the container in realtime `docker logs -f <container-name>`.
+* Upgrade to the latest version simply `docker restart mcmyadmin`.
+* To monitor the logs of the container in realtime `docker logs -f mcmyadmin`.
 
 
 **Credits**
