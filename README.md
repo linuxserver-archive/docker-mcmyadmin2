@@ -2,7 +2,7 @@
 
 The [LinuxServer.io](http://linuxserver.io) team brings you another quality container release featuring auto-update on startup, easy user mapping and community support. Be sure to checkout our [forums](http://forum.linuxserver.io) or for real-time support our [IRC](http://www.linuxserver.io/index.php/irc/) on freenode at `#linuxserver.io`.
 
-# linuxserver/<container-name>
+# linuxserver/mcmyadmin
 
 This Continer is [Minecraft](https://minecraft.net/)+[McMyAdmin](https://www.mcmyadmin.com/)+[Spigotmc](http://www.spigotmc.org/) This contianer combines all of these things Autocompiles and autoinstalls stuff, so all you have to do is be patient while it works. 
 
