@@ -4,7 +4,7 @@ The [LinuxServer.io](http://linuxserver.io) team brings you another quality cont
 
 # linuxserver/mcmyadmin
 
-This Continer is [Minecraft](https://minecraft.net/)+[McMyAdmin](https://www.mcmyadmin.com/)+[Spigotmc](http://www.spigotmc.org/) This contianer combines all of these things Autocompiles and autoinstalls stuff, so all you have to do is be patient while it works. 
+This container is [Minecraft](https://minecraft.net/), [McMyAdmin](https://www.mcmyadmin.com/) and [Spigotmc](http://www.spigotmc.org/) all-in-one. It combines all of these applications into one container and consequently takes a little while to start up.
 
 
 ####[Minecraft](https://minecraft.net/)
@@ -33,7 +33,7 @@ docker create --name=mcmyadmin -v /etc/localtime:/etc/localtime:ro -v <path to d
 * `-e REV` specifiy the version you want to run. 
 
 
-It is based on phusion-baseimage with ssh removed, for shell access whilst the container is running do `docker exec -it quassel-core /bin/bash`.
+It is based on phusion-baseimage with ssh removed, for shell access whilst the container is running do `docker exec -it mcmyadmin /bin/bash`.
 
 ### User / Group Identifiers
 
@@ -58,9 +58,9 @@ Part of what makes our containers work so well is by allowing you to specify you
 **Credits**
 
 * lonix <lonixx@gmail.com>
-
+* IronicBadger <ironicbadger@linuxserver.io>
 
 **Versions**
 
-
+* 01.07.2015: Fixed docs
 * 26.06.2015: Updated Docs and finalized design.
