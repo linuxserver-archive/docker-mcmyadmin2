@@ -19,30 +19,39 @@ Simply put, Spigot is it. Spigot is that "special sauce" used by many of the wor
 ## Usage
 
 ```
-docker create --name=mcmyadmin -v /etc/localtime:/etc/localtime:ro -v <path to data>:/minecraft -e PGID=<gid> -e PUID=<uid>  -p 1234:1234 linuxserver/mcmyadmin
+docker create --name=mcmyadmin -v /etc/localtime:/etc/localtime:ro -v <path to data>:/minecraft -e PGID=<gid> -e PUID=<uid>  -e REV=1.8.7 -p 8080:8080 -p 25565:25565 linuxserver/mcmyadmin:latest
+
+docker start mcmyadmin
 ```
 
 **Parameters**
 
-* `-p 8080` - for Mcmyadmin webui
-* `-p 25565` - for the minecraft game server
-* `-v /etc/localhost` for timesync - *optional*
-* `-v /minecraft` - The location to store all your permanent files server jars\maps\configs and more. 
+* `-p 8080:8080` - Expose the Mcmyadmin webui on the host OS. Change the first number to use a different port on the host OS.
+* `-p 25565:25565` -  Expose the minecraft game server on the host OS. Change the first number to use a different port on the host OS.
+* `-v /etc/localtime` for timesync - *optional*
+* `-v /appdata/minecraft:/minecraft` - The location to store all your permanent files server jars\maps\configs and more.
 * `-e PGID` for for GroupID - see below for explanation
 * `-e PUID` for for UserID - see below for explanation
-* `-e REV` specifiy the version you want to run. 
+* `-e REV` specifiy the Minecraft version you want to run.
 
+For example:
 
-It is based on phusion-baseimage with ssh removed, for shell access whilst the container is running do `docker exec -it mcmyadmin /bin/bash`.
+```
+docker create --name=mcmyadmin -v /appdata/minecraft:/minecraft -e PUID=1000 -e PGID=1000 -e REV=1.8.7 -p 8080:8080 -p 25565:25565 linuxserver/mcmyadmin:latest
+docker start mcmyadmin
+```
+
+After starting the container, log into the Web UI as the `admin` user with the password `password` and change the password. You should also consider serving the admin UI over https.
 
 ### User / Group Identifiers
 
-**TL;DR** - The `PGID` and `PUID` values set the user / group you'd like your container to 'run as' to the host OS. This can be a user you've created or even root (not recommended).
+**TL;DR** - The `PGID` and `PUID` are the numeric Linux group and user ids for the group/user you'd like your container to 'run as' to the host OS. Typically this is a user you've created, but could even be root (not recommended).
 
 Part of what makes our containers work so well is by allowing you to specify your own `PUID` and `PGID`. This avoids nasty permissions errors with relation to data volumes (`-v` flags). When an application is installed on the host OS it is normally added to the common group called users, Docker apps due to the nature of the technology can't be added to this group. So we added this feature to let you easily choose when running your containers.
 
 ## Notes
 
+* If running multiple containers on one host, change the storage location and host OS ports to avoid conflicts.
 * You can access McMyAdmin on your server's port 8080 e.g. http://<ip>:8080. Default password is "password" and should be changed.
 * Vanilla Minecraft, Spigot MC and CraftBukkit Comes Preinstalled and can be selected from the server dropdown, inside McMyAdmin
 * First boot Can take a long while, as the Craftbukkit and Spigot Mc, binarys will have to be compiled (This is also true when you swap versions)
