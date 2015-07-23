@@ -20,19 +20,7 @@ Simply put, Spigot is it. Spigot is that "special sauce" used by many of the wor
 
 ```
 docker create --name=mcmyadmin -v /etc/localtime:/etc/localtime:ro -v <path to data>:/minecraft -e PGID=<gid> -e PUID=<uid>  -e REV=1.8.7 -p 8080:8080 -p 25565:25565 linuxserver/mcmyadmin:latest
-
-docker start mcmyadmin
 ```
-
-**Parameters**
-
-* `-p 8080:8080` - Expose the Mcmyadmin webui on the host OS. Change the first number to use a different port on the host OS.
-* `-p 25565:25565` -  Expose the minecraft game server on the host OS. Change the first number to use a different port on the host OS.
-* `-v /etc/localtime` for timesync - *optional*
-* `-v /appdata/minecraft:/minecraft` - The location to store all your permanent files server jars\maps\configs and more.
-* `-e PGID` for for GroupID - see below for explanation
-* `-e PUID` for for UserID - see below for explanation
-* `-e REV` specifiy the Minecraft version you want to run.
 
 For example:
 
@@ -41,11 +29,23 @@ docker create --name=mcmyadmin -v /appdata/minecraft:/minecraft -e PUID=1000 -e 
 docker start mcmyadmin
 ```
 
-After starting the container, log into the Web UI as the `admin` user with the password `password` and change the password. You should also consider serving the admin UI over https.
+**Parameters**
+
+ The parameters are split into two halves, separated by a colon. For example with a port `-p external:internal` - what this shows is the port mapping from internal to external of the container. So `-p 8080:80` would expose port `80` from inside the container to be accessible from the host's IP on port `8080` (e.g. `http://192.168.x.x:8080` would show you what's running INSIDE the container on port `80`).
+
+* `-p 8080:8080` - Expose the Mcmyadmin webui on the host OS. Change the first number to use a different port on the host OS.
+* `-p 25565:25565` -  Expose the minecraft game server on the host OS. Change the first number to use a different port on the host OS.
+* `-v /etc/localtime` for timesync - *optional*
+* `-v appdata/minecraft:/minecraft` - The location to store all your permanent files server jars\maps\configs and more.
+* `-e PGID` numeric GroupID - see below for explanation
+* `-e PUID` numeric UserID - see below for explanation
+* `-e REV` specifiy the Minecraft version you want to run.
+
+After starting the container, log into the Web UI as the `admin` user with the password `password` and change the password. You should also consider serving the admin UI over https. This container is based on phusion-baseimage with ssh removed, for shell access whilst the container is running do `docker exec -it mcmyadmin /bin/bash`.
 
 ### User / Group Identifiers
 
-**TL;DR** - The `PGID` and `PUID` are the numeric Linux group and user ids for the group/user you'd like your container to 'run as' to the host OS. Typically this is a user you've created, but could even be root (not recommended).
+**TL;DR** - The `PGID` and `PUID` are the *numeric* Linux group and user ids for the group/user you'd like your container to 'run as' to the host OS. Typically this is a user you've created, but could even be root (not recommended).
 
 Part of what makes our containers work so well is by allowing you to specify your own `PUID` and `PGID`. This avoids nasty permissions errors with relation to data volumes (`-v` flags). When an application is installed on the host OS it is normally added to the common group called users, Docker apps due to the nature of the technology can't be added to this group. So we added this feature to let you easily choose when running your containers.
 
