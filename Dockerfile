@@ -20,11 +20,6 @@ ADD init/ /etc/my_init.d/
 ADD services/ /etc/service/
 RUN chmod -v +x /etc/service/*/run && chmod -v +x /etc/my_init.d/*.sh
 
-
-# Use baseimage-docker's init system
-CMD ["/sbin/my_init"]
-
-
 # Volums and Ports
 VOLUME /minecraft
 EXPOSE 8080
