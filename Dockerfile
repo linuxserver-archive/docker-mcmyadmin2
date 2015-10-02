@@ -5,7 +5,7 @@ MAINTAINER Stian Larsen <lonixx@gmail.com>
 RUN add-apt-repository ppa:webupd8team/java && \
 apt-get update -q && \
 echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections && \
-apt-get install oracle-java7-installer oracle-java7-set-default  wget zip unzip git -y && \
+apt-get install oracle-java7-installer oracle-java7-set-default  wget zip unzip git-core -y && \
 wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar -O /tmp/BuildTools.jar && \
 wget http://mcmyadmin.com/Downloads/MCMA2_glibc26_2.zip -O /tmp/MCMA2_glibc26_2.zip && \
 wget http://mcmyadmin.com/Downloads/etc.zip -O /tmp/etc.zip && \
