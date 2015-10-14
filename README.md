@@ -4,7 +4,7 @@ The [LinuxServer.io](http://linuxserver.io) team brings you another quality cont
 
 # linuxserver/mcmyadmin
 
-This container is [Minecraft](https://minecraft.net/), [McMyAdmin](https://www.mcmyadmin.com/) and [Spigotmc](http://www.spigotmc.org/) all-in-one. It combines all of these applications into one container and consequently takes a little while to start up.
+This container is [Minecraft](https://minecraft.net/), [McMyAdmin](https://www.mcmyadmin.com/)all-in-one. It combines all of these applications into one container and consequently takes a little while to start up.
 
 
 ####[Minecraft](https://minecraft.net/)
@@ -13,8 +13,6 @@ Minecraft is a game about breaking and placing blocks. At first, people built st
 ####[McMyAdmin](https://www.mcmyadmin.com/)
 is the leading web control panel and administration console for Minecraft servers, trusted by over 75000 server admins and more than 35 different service providers.
 
-####[Spigotmc](http://www.spigotmc.org/)
-Simply put, Spigot is it. Spigot is that "special sauce" used by many of the world's top Minecraft servers to ensure that they can cope with their huge player base and ensure the satisfaction of their players.
 
 ## Usage
 
@@ -25,7 +23,7 @@ docker create --name=mcmyadmin -v /etc/localtime:/etc/localtime:ro -v <path to d
 For example:
 
 ```
-docker create --name=mcmyadmin -v /appdata/minecraft:/minecraft -e PUID=1000 -e PGID=1000 -e REV=1.8.7 -p 8080:8080 -p 25565:25565 linuxserver/mcmyadmin:latest
+docker create --name=mcmyadmin -v /appdata/minecraft:/minecraft -e PUID=1000 -e PGID=1000 -p 8080:8080 -p 25565:25565 linuxserver/mcmyadmin:latest
 docker start mcmyadmin
 ```
 
@@ -39,7 +37,6 @@ docker start mcmyadmin
 * `-v appdata/minecraft:/minecraft` - The location to store all your permanent files server jars\maps\configs and more.
 * `-e PGID` numeric GroupID - see below for explanation
 * `-e PUID` numeric UserID - see below for explanation
-* `-e REV` specifiy the Minecraft version you want to run.
 
 After starting the container, log into the Web UI as the `admin` user with the password `password` and change the password. You should also consider serving the admin UI over https. This container is based on phusion-baseimage with ssh removed, for shell access whilst the container is running do `docker exec -it mcmyadmin /bin/bash`.
 
@@ -52,10 +49,7 @@ Part of what makes our containers work so well is by allowing you to specify you
 ## Notes
 
 * If running multiple containers on one host, change the storage location and host OS ports to avoid conflicts.
-* You can access McMyAdmin on your server's port 8080 e.g. http://<ip>:8080. Default password is "password" and should be changed.
-* Vanilla Minecraft, Spigot MC and CraftBukkit Comes Preinstalled and can be selected from the server dropdown, inside McMyAdmin
-* First boot Can take a long while, as the Craftbukkit and Spigot Mc, binarys will have to be compiled (This is also true when you swap versions)
-* Minimum of 2GB of ram required for this container to work properly.
+* You can access McMyAdmin on your server's port 8080 e.g. http://<ip>:8080. Default password is "password" and should be changed.* Minimum of 2GB of ram required for this container to work properly.
 
 
 ## Updates
@@ -64,12 +58,8 @@ Part of what makes our containers work so well is by allowing you to specify you
 * To monitor the logs of the container in realtime `docker logs -f mcmyadmin`.
 
 
-**Credits**
+## Versions
 
-* lonix <lonixx@gmail.com>
-* IronicBadger <ironicbadger@linuxserver.io>
-
-**Versions**
-
-* 01.07.2015: Fixed docs
-* 26.06.2015: Updated Docs and finalized design.
++ **14.10.2104:** Removed Support for spigotmc
++ **01.07.2015:** Fixed docs
++ **26.06.2015:** Updated Docs and finalized design.
