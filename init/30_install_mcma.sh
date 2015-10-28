@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ ! -x /minecraft/MCMA2_Linux_x86_64 ]; 
-	then 
+if [ ! -x /minecraft/MCMA2_Linux_x86_64 ];
+	then
 	echo "
 	**********************************************************
 	Installing Mcmyadmin & Vanilla Minecraft,
@@ -13,3 +13,5 @@ if [ ! -x /minecraft/MCMA2_Linux_x86_64 ];
 	cd /minecraft
 	./MCMA2_Linux_x86_64 -setpass password -nonotice -configonly
 fi
+
+chown -R abc:abc /minecraft
