@@ -1,12 +1,12 @@
 FROM linuxserver/baseimage
 MAINTAINER Stian Larsen <lonixx@gmail.com>
-ENV APTLIST="oracle-java7-installer oracle-java7-set-default  wget zip unzip git-core"
+ENV APTLIST="oracle-java8-installer oracle-java8-set-default  wget zip unzip git-core"
 
 
 #Applying stuff
 RUN add-apt-repository ppa:webupd8team/java && \
 apt-get update -q && \
-echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections && \
+echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections && \
 apt-get install \
 $APTLIST -y && \
 #wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar -O /tmp/BuildTools.jar && \
