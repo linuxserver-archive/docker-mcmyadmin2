@@ -1,6 +1,6 @@
 FROM linuxserver/baseimage
 MAINTAINER Stian Larsen <lonixx@gmail.com>
-ENV APTLIST="oracle-java8-installer oracle-java8-set-default  wget zip unzip git-core"
+ENV APTLIST="oracle-java8-installer oracle-java8-set-default libgdiplus wget zip unzip git-core"
 
 
 #Applying stuff
