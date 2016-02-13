@@ -19,7 +19,7 @@ is the leading web control panel and administration console for Minecraft server
 ```
 docker create --name=mcmyadmin -v /etc/localtime:/etc/localtime:ro -v <path to data>:/minecraft \
 -e PGID=<gid> -e PUID=<uid>  -e REV=1.8.7 -p 8080:8080 -p 25565:25565 \
-linuxserver/mcmyadmin:latest
+linuxserver/mcmyadmin2
 ```
 
 For example:
