@@ -9,7 +9,6 @@ apt-get update -q && \
 echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections && \
 apt-get install \
 $APTLIST -y && \
-#wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar -O /tmp/BuildTools.jar && \
 wget http://mcmyadmin.com/Downloads/MCMA2_glibc26_2.zip -O /tmp/MCMA2_glibc26_2.zip && \
 wget http://mcmyadmin.com/Downloads/etc.zip -O /tmp/etc.zip && \
 unzip /tmp/etc.zip -d /usr/local && \
