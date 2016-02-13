@@ -17,13 +17,18 @@ is the leading web control panel and administration console for Minecraft server
 ## Usage
 
 ```
-docker create --name=mcmyadmin -v /etc/localtime:/etc/localtime:ro -v <path to data>:/minecraft -e PGID=<gid> -e PUID=<uid>  -e REV=1.8.7 -p 8080:8080 -p 25565:25565 linuxserver/mcmyadmin:latest
+docker create --name=mcmyadmin -v /etc/localtime:/etc/localtime:ro -v <path to data>:/minecraft \
+-e PGID=<gid> -e PUID=<uid>  -e REV=1.8.7 -p 8080:8080 -p 25565:25565 \
+linuxserver/mcmyadmin:latest
 ```
 
 For example:
 
 ```
-docker create --name=mcmyadmin -v /appdata/minecraft:/minecraft -e PUID=1000 -e PGID=1000 -p 8080:8080 -p 25565:25565 linuxserver/mcmyadmin2
+docker create --name=mcmyadmin -v /appdata/minecraft:/minecraft \
+-e PUID=1000 -e PGID=1000 -p 8080:8080 -p 25565:25565 \
+linuxserver/mcmyadmin2
+
 docker start mcmyadmin
 ```
 
