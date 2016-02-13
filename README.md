@@ -23,7 +23,7 @@ docker create --name=mcmyadmin -v /etc/localtime:/etc/localtime:ro -v <path to d
 For example:
 
 ```
-docker create --name=mcmyadmin -v /appdata/minecraft:/minecraft -e PUID=1000 -e PGID=1000 -p 8080:8080 -p 25565:25565 linuxserver/mcmyadmin:latest
+docker create --name=mcmyadmin -v /appdata/minecraft:/minecraft -e PUID=1000 -e PGID=1000 -p 8080:8080 -p 25565:25565 linuxserver/mcmyadmin2
 docker start mcmyadmin
 ```
 
