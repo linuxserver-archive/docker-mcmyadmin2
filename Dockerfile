@@ -16,14 +16,11 @@ unzip /tmp/MCMA2_glibc26_2.zip -d /tmp && \
 rm /tmp/etc.zip /tmp/MCMA2_glibc26_2.zip && \
 apt-get clean && rm -rf /var/lib/apt/lists/* /var/tmp/*
 
-
 #Adding Custom files
 ADD init/ /etc/my_init.d/
 ADD services/ /etc/service/
 RUN chmod -v +x /etc/service/*/run && chmod -v +x /etc/my_init.d/*.sh
 
-
 # Volums and Ports
 VOLUME /minecraft
-EXPOSE 8080
-EXPOSE 25565
+EXPOSE 8080 25565
