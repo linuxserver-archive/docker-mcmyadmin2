@@ -64,7 +64,7 @@ Part of what makes our containers work so well is by allowing you to specify you
 
 
 ## Versions
-
++ **13.02.2016:** Switched to Java 8
 + **14.10.2104:** Removed Support for spigotmc
 + **01.07.2015:** Fixed docs
 + **26.06.2015:** Updated Docs and finalized design.
