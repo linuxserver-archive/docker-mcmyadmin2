@@ -16,7 +16,7 @@ The [LinuxServer.io][linuxserverurl] team brings you another container release f
 
 [McMyAdmin][mcymadminurl] combines minecraft with a web control panel and admin console so can take a little while to start up.
 
-[![mcmyadmin]()][mcymadminurl]
+[![mcmyadmin](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/mcmyadmin-banner.png)][mcymadminurl]
 [mcymadminurl]: https://www.mcmyadmin.com/
 
 ## Usage
