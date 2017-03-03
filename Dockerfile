@@ -1,26 +1,43 @@
-FROM linuxserver/baseimage
-MAINTAINER Stian Larsen <lonixx@gmail.com>
-ENV APTLIST="oracle-java8-installer oracle-java8-set-default libgdiplus wget zip unzip git-core"
+FROM lsiobase/xenial
+MAINTAINER Stian Larsen , sparklyballs
 
+# set version label
+ARG BUILD_DATE
+ARG VERSION
+LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 
-#Applying stuff
-RUN add-apt-repository ppa:webupd8team/java && \
-apt-get update -q && \
-echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | sudo /usr/bin/debconf-set-selections && \
-apt-get install \
-$APTLIST -y && \
-wget http://mcmyadmin.com/Downloads/MCMA2_glibc26_2.zip -O /tmp/MCMA2_glibc26_2.zip && \
-wget http://mcmyadmin.com/Downloads/etc.zip -O /tmp/etc.zip && \
-unzip /tmp/etc.zip -d /usr/local && \
-unzip /tmp/MCMA2_glibc26_2.zip -d /tmp && \
-rm /tmp/etc.zip /tmp/MCMA2_glibc26_2.zip && \
-apt-get clean && rm -rf /var/lib/apt/lists/* /var/tmp/*
+# set environment variables
+ARG DEBIAN_FRONTEND="noninteractive"
 
-#Adding Custom files
-ADD init/ /etc/my_init.d/
-ADD services/ /etc/service/
-RUN chmod -v +x /etc/service/*/run && chmod -v +x /etc/my_init.d/*.sh
+# install packages
+RUN \
+ apt-get update && \
+ apt-get install -y \
+	git-core \
+	libgdiplus \
+	openjdk-8-jdk-headless \
+	unzip \
+	zip && \
 
-# Volums and Ports
-VOLUME /minecraft
+# fetch and unpack mcmyadmin files
+ curl -o \
+ /tmp/MCMA2_glibc26_2.zip -L \
+	http://mcmyadmin.com/Downloads/MCMA2_glibc26_2.zip && \
+ curl -o \
+ /tmp/etc.zip -L \
+	http://mcmyadmin.com/Downloads/etc.zip && \
+ unzip -q /tmp/etc.zip -d /usr/local && \
+ unzip -q /tmp/MCMA2_glibc26_2.zip -d /opt/mcmyadmin2 && \
+
+# cleanup
+ rm -rf \
+	/tmp/* \
+	/var/lib/apt/lists/* \
+	/var/tmp/*
+
+# copy local files
+COPY root/ /
+
+# ports and volumes
 EXPOSE 8080 25565
+VOLUME /minecraft

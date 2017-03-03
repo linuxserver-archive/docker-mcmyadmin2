@@ -1,0 +1,5 @@
+#!/usr/bin/with-contenv bash
+
+cd /minecraft || exit
+exec \
+	s6-setuidgid  abc ./MCMA2_Linux_x86_64

@@ -1,6 +1,7 @@
-#!/bin/bash
+#!/usr/bin/with-contenv bash
 
-if [ ! -x /minecraft/MCMA2_Linux_x86_64 ];
+# install mcmyadmin2
+if [ ! -e /minecraft/MCMA2_Linux_x86_64 ];
 	then
 	echo "
 	**********************************************************
@@ -8,10 +9,11 @@ if [ ! -x /minecraft/MCMA2_Linux_x86_64 ];
 	this will only take a few minutes
 	**********************************************************
 	"
-	cp -v /tmp/MCMA2_Linux_x86_64 /minecraft/MCMA2_Linux_x86_64
+	cp -v /opt/mcmyadmin2/*  /minecraft/MCMA2_Linux_x86_64
 	chmod +x /minecraft/MCMA2_Linux_x86_64
 	cd /minecraft || exit
 	./MCMA2_Linux_x86_64 -setpass password -nonotice -configonly
 fi
 
+# permissions
 chown -R abc:abc /minecraft
