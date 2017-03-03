@@ -1,3 +1,0 @@
-#!/bin/bash
-cd /minecraft
-exec /sbin/setuser abc ./MCMA2_Linux_x86_64 
