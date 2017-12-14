@@ -1,16 +1,16 @@
 FROM lsiobase/xenial
-MAINTAINER Stian Larsen , sparklyballs
 
 # set version label
 ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+LABEL maintainer="sparklyballs"
 
 # set environment variables
 ARG DEBIAN_FRONTEND="noninteractive"
 
-# install packages
 RUN \
+ echo "**** install packages ****" && \
  apt-get update && \
  apt-get install -y \
 	git-core \
@@ -18,8 +18,7 @@ RUN \
 	openjdk-8-jdk-headless \
 	unzip \
 	zip && \
-
-# fetch and unpack mcmyadmin files
+ echo "**** install mcmyadmin ****" && \
  curl -o \
  /tmp/MCMA2_glibc26_2.zip -L \
 	http://mcmyadmin.com/Downloads/MCMA2_glibc26_2.zip && \
@@ -28,8 +27,7 @@ RUN \
 	http://mcmyadmin.com/Downloads/etc.zip && \
  unzip -q /tmp/etc.zip -d /usr/local && \
  unzip -q /tmp/MCMA2_glibc26_2.zip -d /opt/mcmyadmin2 && \
-
-# cleanup
+ echo "**** cleanup ****" && \
  rm -rf \
 	/tmp/* \
 	/var/lib/apt/lists/* \

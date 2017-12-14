@@ -80,8 +80,9 @@ You should also consider serving the admin UI over https.
 
 ## Versions
 
-+ **03.03.2017:** Rebase to ubuntu xenial.
-+ **13.02.2016:** Switched to Java 8
-+ **14.10.2104:** Removed Support for spigotmc
-+ **01.07.2015:** Fixed docs
-+ **26.06.2015:** Updated Docs and finalized design.
++ **14.12.17:** Fix continuation lines.
++ **03.03.17:** Rebase to ubuntu xenial.
++ **13.02.16:** Switched to Java 8
++ **14.10.15:** Removed Support for spigotmc
++ **01.07.15:** Fixed docs
++ **26.06.15:** Updated Docs and finalized design.
